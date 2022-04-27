@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  
 }
 
 .App-logo {
@@ -49,4 +53,19 @@ ul {
 .stats {
   margin-top: 20px;
   display: block;
+}
+
+#game-message {
+  background-color: red;
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  height: 150px;
+  width: 60%;
+  visibility: hidden;
+}
+
+#game-text {
+  position: absolute;
+  background-color:red;
 }

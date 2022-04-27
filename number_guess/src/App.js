@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import './App.css';
 
 
-
-let gameNum = Math.floor(Math.round * 100) + 1
+// change 100 by importing from settings route 
+let gameNum = Math.floor(Math.random() * 100) + 1;
 
 function App() {
-
-  const [gameNumber, setGameNumber] = useState();
+  
+  //UseState to handle playerNum, gameNumber, numPlayed, and how many guess. 
+  const [gameNumber, setGameNumber] = useState(gameNum);
+  const [gameMessage, setGameMessage] = useState(" ")
   const [playerNum, setPlayerNum] = useState(" ");
   const [playerCount, setPlayerCount] = useState(0);
   const [numPlayed, setNumPlayed] = useState([]);
@@ -17,6 +19,17 @@ function App() {
   }
 
   const buttonPress = () => { 
+
+    // change 4 to imported variable from settings route. 
+    if(playerCount < 4) {
+      parseInt(playerNum) === parseInt(gameNum) ? (setGameMessage("You Win!")) : (setGameMessage("Try Again!"))
+      console.log(playerNum)
+      console.log(gameNum)
+    } else {
+      setGameMessage("Game Over!")
+    }
+
+
     setPlayerCount(playerCount + 1)
     setNumPlayed([...numPlayed, playerNum])
   } 
@@ -28,12 +41,15 @@ function App() {
       <input type='text' value={playerNum} onChange={playerGuessed}/>
       <button className='guess' onClick={buttonPress} > Guess </button>
 
+      <div id="game-message"> <div id="game-text"><h1> { gameMessage } </h1><button>Play again?</button></div> </div>
+
       <div className="stats">
-      
-       <p> Guesses made: {playerCount} </p>
-       <p> Numbers tried:  </p>
+       <p> Game Message: { gameMessage } </p>
+       <p> Game Number: { gameNumber } </p>
+       <p> Guesses Made: { playerCount } </p>
+       <p> Numbers Tried  </p>
        <ul> {numPlayed.map((item, index) => {
-          return <li> {item} </li>
+          return <li key={index}> {item} </li>
           })} </ul>
        
     
