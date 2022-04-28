@@ -1,5 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
+import ReactDOM from "react-dom";
+import {
+  BrowserRouter, Route
+} from "react-router-dom";
 import './App.css';
+
+
+import Header from './components/header';
 
 
 // change 100 by importing from settings route 
@@ -28,16 +36,20 @@ function App() {
     } else {
       setGameMessage("Game Over!")
     }
-
-
     setPlayerCount(playerCount + 1)
     setNumPlayed([...numPlayed, playerNum])
   } 
   
   return (
+    <BrowserRouter>
     <div className="App">
-      <h1> Guess a number </h1>
-      
+      <Header />
+      <Route path='/' component={}/>
+      <Route path='/settings' component={}/>
+      <Route path='/stats' component={}/>
+
+
+
       <input type='text' value={playerNum} onChange={playerGuessed}/>
       <button className='guess' onClick={buttonPress} > Guess </button>
 
@@ -55,6 +67,7 @@ function App() {
     
       </div>
     </div>
+    </BrowserRouter>
 )}
 
 
