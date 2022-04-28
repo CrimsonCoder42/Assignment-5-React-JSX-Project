@@ -19,7 +19,7 @@ function App() {
   const [endRange, setEndRange]=useState(100);
   const average =()=>{
     const num = numPlayed.length;
-    const avg = playerCount/num;;
+    const avg = num/playerCount;;
     console.log ("average:", avg);
     return avg;
   }

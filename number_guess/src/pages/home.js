@@ -51,7 +51,10 @@ function Home(props) {
     <input type='text' value={playerNum} onChange={playerGuessed}/>
     <button className='guess' onClick={buttonPress} > Guess </button>
     
+    {/* Change div color and make appear depending on win or loss */}
     <div id="game-message"> <div id="game-text"><h1> { gameMessage } </h1><button>Play again?</button></div> </div>
+    {/* have Play Again button reset game but not stats  */}
+
 
     <div className="stats">
      <p> Game Message: { gameMessage } </p>
