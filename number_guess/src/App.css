@@ -21,6 +21,36 @@ ul {
   display: block;
 }
 
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #B4E637;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav li {
+  float: left;
+  text-align: center;
+  list-style-type: none;
+  padding: 14px 16px;
+}
+
+/* Change the color of links on hover */
+.topnav li:hover {
+  background-color: #FCF930;
+}
+
+/* Add a color to the active/current link */
+.topnav li.active {
+  background-color: #04AA6D;
+}
+
+.navLink{
+  text-decoration: none;
+  font-size: 20px;
+  color:black
+}
+
 #game-message {
   background-color: red;
   position: absolute;
