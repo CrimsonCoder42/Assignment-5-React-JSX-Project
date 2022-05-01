@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import useVisible from '../hook/visible';
 
 
 let gameNum = Math.floor(Math.random() * 100) + 1;
@@ -12,6 +13,8 @@ function Home(props) {
   const [playerNum, setPlayerNum] = useState(" ");
   const [playerCount, setPlayerCount] = useState(0);
   const [numPlayed, setNumPlayed] = useState([]);
+
+  const [] = useVisible();
 
   const playerGuessed = (n) => {
     setPlayerNum(n.target.value)

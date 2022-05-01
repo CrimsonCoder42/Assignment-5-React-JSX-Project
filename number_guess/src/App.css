@@ -51,7 +51,7 @@ ul {
   color:black
 }
 
-#game-message {
+.game-message {
   background-color: red;
   position: absolute;
   top: 30%;
