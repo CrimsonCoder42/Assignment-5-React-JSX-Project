@@ -1,24 +1,31 @@
 import React from 'react';
 import { useState } from 'react';
-import useVisible from '../hook/visible';
 
 
-let gameNum = Math.floor(Math.random() * 100) + 1;
+
+
 
 function Home(props) {
     //const 
 //UseState to handle playerNum, gameNumber, numPlayed, and how many guess. 
   const [gameNumber, setGameNumber] = useState(props.gameNumber);
+  const [disable, setDisable] = useState(false);
   const [gameMessage, setGameMessage] = useState(" ")
   const [playerNum, setPlayerNum] = useState(" ");
   const [playerCount, setPlayerCount] = useState(0);
   const [numPlayed, setNumPlayed] = useState([]);
 
-  const [] = useVisible();
-
   const playerGuessed = (n) => {
     setPlayerNum(n.target.value)
   }
+
+  function visibleMessage(color) {
+    const message = document.getElementById("game-message")
+    const text = document.getElementById("game-text")
+    message.style.visibility = "visible";
+    message.style.backgroundColor = color;
+    text.style.backgroundColor = color;
+}
 
   const buttonPress = () => { 
 
@@ -29,17 +36,21 @@ function Home(props) {
         if(pn===gn)
         {
             setGameMessage("You Win!");
+            visibleMessage('green');
+            setDisable(true);
         }else if (pn < gn)
         {
             setGameMessage("Higher!");
+            
         }else {
             setGameMessage("Lower!");
         }
-      
-      console.log(playerNum)
-      console.log(gameNum)
+    //   console.log(playerNum)
+    //   console.log(gameNum)
     } else {
       setGameMessage("Game Over!")
+      visibleMessage('red')
+      setDisable(true);
     }
     setPlayerCount(playerCount + 1)
     setNumPlayed([...numPlayed, playerNum])
@@ -47,16 +58,24 @@ function Home(props) {
     props.setPlayerCount(playerCount);
   } 
 
+  function playAgain() {
+    const message = document.getElementById("game-message")
+    message.style.visibility = "hidden";
+    setDisable(false);
+    setGameMessage("");
+    setPlayerCount(0);
+    setNumPlayed([]);
+    setGameNumber(Math.floor(Math.random() * 100) + 1);
+  }
 
     return(
         <div>
         <h1> Pick a number </h1>
-    <input type='text' value={playerNum} onChange={playerGuessed}/>
-    <button className='guess' onClick={buttonPress} > Guess </button>
+    <input disabled={disable} type='text' value={playerNum} onChange={playerGuessed}/>
+    <button disabled={disable} className='guess' onClick={buttonPress} > Guess </button>
     
-    {/* Change div color and make appear depending on win or loss */}
-    <div id="game-message"> <div id="game-text"><h1> { gameMessage } </h1><button>Play again?</button></div> </div>
-    {/* have Play Again button reset game but not stats  */}
+    
+    <div id="game-message"> <div id="game-text"><h1> { gameMessage } </h1><button onClick={playAgain}>Play again?</button></div> </div>
 
 
     <div className="stats">

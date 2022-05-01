@@ -51,8 +51,8 @@ ul {
   color:black
 }
 
-.game-message {
-  background-color: red;
+#game-message {
+  text-align: center;
   position: absolute;
   top: 30%;
   left: 25%;
@@ -63,5 +63,6 @@ ul {
 
 #game-text {
   position: absolute;
-  background-color:red;
+  left: 5%;
+  text-align: center;
 }
