@@ -7,8 +7,8 @@ const Stats = (props) => {
         // # guessed correctly & Average number of guesses needed 
     <div>
     <h1> Stats </h1>
-    <p> Guesses Made: { props.playerCount } </p>
-    <p> Average: { props.average } </p>
+    <p> Guessed correctly: { props.playerCount } </p>
+    <p> Average guesses needed: { props.average } </p>
     
     </div>)
 }

@@ -68,6 +68,18 @@ function Home(props) {
     setGameNumber(Math.floor(Math.random() * 100) + 1);
   }
 
+  function hideShow() {
+    const gameNum = document.getElementById('game-number')
+    const cheatBtn = document.getElementById('cheat')
+    if (gameNum.className == 'show') {
+        gameNum.className = 'hidden'
+        cheatBtn.innerText = 'Cheat'
+    } else {
+        gameNum.className = 'show'
+        cheatBtn.innerText = 'Hide'
+    }
+  }
+
     return(
         <div>
         <h1> Pick a number </h1>
@@ -80,7 +92,7 @@ function Home(props) {
 
     <div className="stats">
      <p> Game Message: { gameMessage } </p>
-     <p> Game Number: { gameNumber } </p>
+     <p id='game-number' className="show"> Game Number: { gameNumber } </p> <button id ="cheat" onClick={hideShow}>Cheat</button>
      <p> Guesses Made: { playerCount } </p>
      <p> Numbers Tried  </p>
      <ul> {numPlayed.map((item, index) => {
