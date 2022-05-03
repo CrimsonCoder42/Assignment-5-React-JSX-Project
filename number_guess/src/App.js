@@ -32,7 +32,7 @@ function App() {
     
       <Routes>
       <Route path="/" element={ <Home gameNumber={gameNumber} setPlayerCount={setPlayerCount} setNumPlayed ={setNumPlayed} maxGuess={maxGuess}/> } />
-      <Route path="/settings" element={ <Settings maxGuess={maxGuess} setMaxGuess={maxGuess} endRange={endRange} setEndRange={setEndRange}/> }/>
+      <Route path="/settings" element={ <Settings maxGuess={maxGuess} setMaxGuess={setMaxGuess} endRange={endRange} setEndRange={setEndRange}/> }/>
       <Route path="/stats" element={ <Stats playerCount={playerCount} average={average()}/> }/>
       </Routes>
 
