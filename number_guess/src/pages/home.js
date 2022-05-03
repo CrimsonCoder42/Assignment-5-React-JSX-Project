@@ -92,7 +92,7 @@ function Home(props) {
 
     <div className="stats">
      <p> Game Message: { gameMessage } </p>
-     <p id='game-number' className="show"> Game Number: { gameNumber } </p> <button id ="cheat" onClick={hideShow}>Cheat</button>
+     <p id='game-number' className="hidden"> Game Number: { gameNumber } </p> <button id ="cheat" onClick={hideShow}>Cheat</button>
      <p> Guesses Made: { playerCount } </p>
      <p> Numbers Tried  </p>
      <ul> {numPlayed.map((item, index) => {
