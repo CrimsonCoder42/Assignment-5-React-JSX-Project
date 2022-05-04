@@ -13,6 +13,7 @@ function Home(props) {
   const [gameMessage, setGameMessage] = useState(" ")
   const [playerNum, setPlayerNum] = useState(" ");
   const [playerCount, setPlayerCount] = useState(0);
+  const [winCount2, setWinCount2] = useState(props.winCount);
   const [numPlayed, setNumPlayed] = useState([]);
 
   const playerGuessed = (n) => {
@@ -33,12 +34,25 @@ function Home(props) {
     if(playerCount < props.maxGuess) {
         const pn =  parseInt(playerNum);
         const gn =  parseInt(gameNumber);
+        
         if(pn===gn)
-        {
+        {  
+            const newCount = winCount2+1;
+            console.log("newcount: ", newCount);
+            setWinCount2(newCount);
+            console.log("home:" , winCount2)
+            props.setWinCount(newCount);
+            
             setGameMessage("You Win!");
             visibleMessage('green');
             setDisable(true);
-        }else if (pn < gn)
+        }
+        else if (playerCount+1 >= props.maxGuess) {
+            setGameMessage("Game Over!")
+            visibleMessage('red')
+            setDisable(true);
+        }
+        else if (pn < gn)
         {
             setGameMessage("Higher!");
             
@@ -52,10 +66,12 @@ function Home(props) {
       visibleMessage('red')
       setDisable(true);
     }
-    setPlayerCount(playerCount + 1)
+   
+    const pc = playerCount +1;
+    setPlayerCount(pc);
     setNumPlayed([...numPlayed, playerNum])
     props.setNumPlayed([...numPlayed, playerNum])
-    props.setPlayerCount(playerCount);
+    props.setPlayerCount(pc);
   } 
 
   function playAgain() {
@@ -65,7 +81,8 @@ function Home(props) {
     setGameMessage("");
     setPlayerCount(0);
     setNumPlayed([]);
-    setGameNumber(Math.floor(Math.random() * 100) + 1);
+    console.log ("endRange: ", props.endRange);
+    setGameNumber(Math.floor(Math.random() * props.endRange) + 1);
   }
 
   function hideShow() {

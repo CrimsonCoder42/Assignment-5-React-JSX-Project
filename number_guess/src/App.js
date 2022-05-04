@@ -8,19 +8,25 @@ import Settings from './pages/settings';
 import Stats from './pages/stats';
 
 // change 100 by importing from settings route 
-let gameNum = Math.floor(Math.random() * 100) + 1;
+
 
 function App() {
 
-  const [gameNumber, setGameNumber] = useState(gameNum);
+  const [gameNumber, setGameNumber] = useState(0);
   const [playerCount, setPlayerCount] = useState(0);
+  const [winCount, setWinCount] = useState(0);
   const [maxGuess, setMaxGuess] = useState(4);
   const [numPlayed, setNumPlayed] = useState([]);
   const [endRange, setEndRange]=useState(100);
+
+  const randomNumber=()=>{
+      return Math.floor(Math.random() * endRange) + 1;
+  }
   const average =()=>{
-    const num = numPlayed.length;
-    const avg = num/playerCount;;
-    console.log ("average:", avg);
+    
+    const num = winCount;
+    const avg = playerCount/num;
+    console.log ("average:",num, playerCount, avg);
     return avg;
   }
   return (
@@ -31,9 +37,9 @@ function App() {
     <div className="App">
     
       <Routes>
-      <Route path="/" element={ <Home gameNumber={gameNumber} setPlayerCount={setPlayerCount} setNumPlayed ={setNumPlayed} maxGuess={maxGuess}/> } />
+      <Route path="/" element={ <Home gameNumber={randomNumber()} setPlayerCount={setPlayerCount} setWinCount={setWinCount} winCount={winCount} endRange={endRange} setNumPlayed ={setNumPlayed} maxGuess={maxGuess}/> } />
       <Route path="/settings" element={ <Settings maxGuess={maxGuess} setMaxGuess={setMaxGuess} endRange={endRange} setEndRange={setEndRange}/> }/>
-      <Route path="/stats" element={ <Stats playerCount={playerCount} average={average()}/> }/>
+      <Route path="/stats" element={ <Stats playerCount={playerCount} winCount={winCount} average={average()}/> }/>
       </Routes>
 
     </div>
