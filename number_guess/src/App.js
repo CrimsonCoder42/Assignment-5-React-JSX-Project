@@ -10,7 +10,7 @@ import Stats from './pages/stats';
 // change 100 by importing from settings route 
 
 
-function App() {
+function GuessApp() {
 
   const [gameNumber, setGameNumber] = useState(0);
   const [playerCount, setPlayerCount] = useState(0);
@@ -48,4 +48,4 @@ function App() {
 )}
 
 
-export default App;
+export default GuessApp;
